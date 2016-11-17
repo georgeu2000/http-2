@@ -18,6 +18,8 @@ install:
   - unzip h2spec_linux_amd64.zip
 
 script:
-  - ruby example/server.rb > /dev/null &
+  - cd example
+  - ruby server.rb --secure > /dev/null &
   - sleep 1
-  - ./h2spec_linux_amd64/h2spec -o 1 -p 8080
+  - cd
+  - ./h2spec_linux_amd64/h2spec -o 1 -p 8080 -t -k
